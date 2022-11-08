@@ -1,0 +1,1 @@
+A pong-like game (kind of) made for learning some SFML.
