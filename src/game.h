@@ -8,6 +8,7 @@ using namespace sf;
 class Game {
 private:
 	Player player;
+	Player playerTwo;
 	Ball ball;
 	Vector2i points;
 

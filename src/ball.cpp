@@ -50,5 +50,6 @@ void Ball::update(double dt) {
 	if (position.y + (radius * 2.0f) > Settings::getWindowHeight()) {
 		direction.y = -1;
 	}
+
 	updateShape();
 }

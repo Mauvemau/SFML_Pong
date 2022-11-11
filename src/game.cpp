@@ -7,17 +7,29 @@ using namespace std;
 // Private
 
 void Game::manageInput(double dt) {
-	if (Keyboard::isKeyPressed(Keyboard::Up)){
+	if (Keyboard::isKeyPressed(Keyboard::W)){
 		player.move(-1, dt);
 	}
-	if (Keyboard::isKeyPressed(Keyboard::Down)) {
+	else if (Keyboard::isKeyPressed(Keyboard::S)) {
 		player.move(1, dt);
+	}
+	
+	if (Keyboard::isKeyPressed(Keyboard::Up)) {
+		playerTwo.move(-1, dt);
+	}
+	else if (Keyboard::isKeyPressed(Keyboard::Down)) {
+		playerTwo.move(1, dt);
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+		window->close();
 	}
 }
 
 void Game::draw() {
 	window->clear();
 	window->draw(player.getShape());
+	window->draw(playerTwo.getShape());
 	window->draw(ball.getShape());
 	window->display();
 }
@@ -39,6 +51,7 @@ void Game::update(double dt) {
 Game::Game(int windowWidth, int windowHeight)
 :
 player({ static_cast<float>(windowWidth * .1f), static_cast<float>(windowHeight * .5f) }, { 25.0f, 100.0f }, 450.0f, Color(255, 0, 0, 255)),
+playerTwo({ static_cast<float>(windowWidth * .9f), static_cast<float>(windowHeight * .5f) }, { 25.0f, 100.0f }, 450.0f, Color(0, 0, 255, 255)),
 ball({ { static_cast<float>(windowWidth * .5f), static_cast<float>(windowHeight * .5f) }, 15.0f, 200.0f, Color(0, 255, 0, 255) }) {
 
 	window = new RenderWindow(VideoMode(windowWidth, windowHeight), "SFML Pong");
